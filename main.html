@@ -1,0 +1,78 @@
+<html>
+    <head>
+		<title>Group Project</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+    <!--The style '.book_shelf' is used to format the current output of displayMedia()-->
+	<style>
+		.book_shelf {
+			display: inline;
+			list-style-type: none;
+			margin-right: 20px;
+			padding:4px;
+			border:1px solid black;
+		}
+	</style>
+		<div id="search_div">
+			<input type="text" id="search" placeholder="search your library" onkeydown="if (event.keyCode===13) searchMedia(library_content);" /> 
+			<select id="search_type">
+				<option value="all">All Fields</option>
+				<option value="creator">Author/Artist/Director</option>
+				<option value="title">Title</option>
+				<option value="date">Year</option>
+			</select>
+			<input type="submit" value="Search" onclick="searchMedia(library_content);" />
+		</div>
+		
+		<div id="all_curr">
+			<p>All media: <input type="radio" name="all_curr" value="All" checked />
+			Current results:<input type="radio" name="all_curr" value="Current" /></p>
+		</div>
+		
+		<div id="sort">
+			<p>Arrange your collection by: 
+				<select id="sort_by">
+					<option value="title">Title</option>
+					<option value="creator">Author/Artist/Director</option>
+					<option value="provider">Publisher/Label/Studio</option>
+					<option value="date">Year</option>
+				</select>
+			<input type="submit" value="Sort" onclick="sortMedia(library_content);" />
+			</p>
+		</div>
+
+		<div id="sidebar">
+			<h2>View:</h2>
+			<ul class="opts">
+				<li><input type="checkbox" id="all" checked onclick="filterMedia();" />All</li>
+				<br />
+				<li class="opts"><input type="checkbox" id="adult" class="filter_opts" />Adult</li>
+				<li class="opts"><input type="checkbox" id="ya" class="filter_opts" />Young Adult</li>
+				<li class="opts"><input type="checkbox" id="childrens" class="filter_opts" />Children's</li>
+				<br />
+				<li class="opts"><input type="checkbox" id="fiction" class="filter_opts" />Fiction</li>
+				<li class="opts"><input type="checkbox" id="nonfiction" class="filter_opts" />Nonfiction</li>
+				<br />
+				<li class="opts"><input type="checkbox" id="book" class="filter_opts" />Book</li>
+				<li class="opts"><input type="checkbox" id="graphic_novel" class="filter_opts" />Graphic Book</li>
+				<li class="opts"><input type="checkbox" id="ebook" class="filter_opts" />E-Book</li>
+				<li class="opts"><input type="checkbox" id="audiobook" class="filter_opts" />Audio Book</li>
+				<li class="opts"><input type="checkbox" id="video" class="filter_opts" />Video</li>
+				<li class="opts"><input type="checkbox" id="music" class="filter_opts" />Music</li>
+				<li class="opts"><input type="checkbox" id="videogames" class="filter_opts" />Videogames</li>
+				<li class="opts"><input type="checkbox" id="games" class="filter_opts" />Board and Card Games</li>
+				<br />
+				<li class="opts"><input type="checkbox" id="checked_in" class="filter_opts" />Available</li>
+				<li class="opts"><input type="checkbox" id="checked_out" class="filter_opts" />On Loan</li>
+			</ul>
+		</div>
+		
+		<div id="output"></div>
+		
+	</body>
+	<script src="data.js"></script>
+	<script src="display.js"></script>
+	<script src="search.js"></script>
+	<script src="sort.js"></script>
+</html>
