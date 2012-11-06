@@ -4,7 +4,6 @@
 		<meta charset="UTF-8" />
 	</head>
 	<body>
-    <!--The style '.book_shelf' is used to format the current output of displayMedia()-->
 	<style>
 		.book_shelf {
 			display: inline;
@@ -15,19 +14,19 @@
 		}
 	</style>
 		<div id="search_div">
-			<input type="text" id="search" placeholder="search your library" onkeydown="if (event.keyCode===13) searchMedia(library_content);" /> 
+			<input type="text" id="search" placeholder="search your library" onkeydown="if (event.keyCode===13) handleInput('search');" /> 
 			<select id="search_type">
 				<option value="all">All Fields</option>
 				<option value="creator">Author/Artist/Director</option>
 				<option value="title">Title</option>
 				<option value="date">Year</option>
 			</select>
-			<input type="submit" value="Search" onclick="searchMedia(library_content);" />
+			<input type="submit" value="Search" onclick="handleInput('search');" />
 		</div>
 		
 		<div id="all_curr">
-			<p>All media: <input type="radio" name="all_curr" value="All" checked />
-			Current results:<input type="radio" name="all_curr" value="Current" /></p>
+			<p>All media: <input type="radio" name="all_curr" id="All" checked />
+			Current results:<input type="radio" name="all_curr" id="Current" /></p>
 		</div>
 		
 		<div id="sort">
@@ -38,41 +37,44 @@
 					<option value="provider">Publisher/Label/Studio</option>
 					<option value="date">Year</option>
 				</select>
-			<input type="submit" value="Sort" onclick="sortMedia(library_content);" />
+			<input type="submit" value="Sort" onclick="handleInput('sort');" />
 			</p>
 		</div>
 
 		<div id="sidebar">
 			<h2>View:</h2>
 			<ul class="opts">
-				<li><input type="checkbox" id="all" checked onclick="filterMedia();" />All</li>
+				<li><input type="checkbox" id="all" checked onclick="manageFilterOpts();" />All</li>
 				<br />
-				<li class="opts"><input type="checkbox" id="adult" class="filter_opts" />Adult</li>
-				<li class="opts"><input type="checkbox" id="ya" class="filter_opts" />Young Adult</li>
-				<li class="opts"><input type="checkbox" id="childrens" class="filter_opts" />Children's</li>
+				<li class="opts"><input type="checkbox" id="Adult" class="filter_opts" />Adult</li>
+				<li class="opts"><input type="checkbox" id="YA" class="filter_opts" />Young Adult</li>
+				<li class="opts"><input type="checkbox" id="Children" class="filter_opts" />Children's</li>
 				<br />
-				<li class="opts"><input type="checkbox" id="fiction" class="filter_opts" />Fiction</li>
-				<li class="opts"><input type="checkbox" id="nonfiction" class="filter_opts" />Nonfiction</li>
+				<li class="opts"><input type="checkbox" id="Fiction" class="filter_opts" />Fiction</li>
+				<li class="opts"><input type="checkbox" id="Nonfiction" class="filter_opts" />Nonfiction</li>
 				<br />
-				<li class="opts"><input type="checkbox" id="book" class="filter_opts" />Book</li>
-				<li class="opts"><input type="checkbox" id="graphic_novel" class="filter_opts" />Graphic Book</li>
-				<li class="opts"><input type="checkbox" id="ebook" class="filter_opts" />E-Book</li>
-				<li class="opts"><input type="checkbox" id="audiobook" class="filter_opts" />Audio Book</li>
-				<li class="opts"><input type="checkbox" id="video" class="filter_opts" />Video</li>
-				<li class="opts"><input type="checkbox" id="music" class="filter_opts" />Music</li>
-				<li class="opts"><input type="checkbox" id="videogames" class="filter_opts" />Videogames</li>
-				<li class="opts"><input type="checkbox" id="games" class="filter_opts" />Board and Card Games</li>
+				<li class="opts"><input type="checkbox" id="Book" class="filter_opts" />Book</li>
+				<li class="opts"><input type="checkbox" id="Graphic_Book" class="filter_opts" />Graphic Book</li>
+				<li class="opts"><input type="checkbox" id="Ebook" class="filter_opts" />E-Book</li>
+				<li class="opts"><input type="checkbox" id="Audio_Book" class="filter_opts" />Audio Book</li>
+				<li class="opts"><input type="checkbox" id="Video" class="filter_opts" />Video</li>
+				<li class="opts"><input type="checkbox" id="Music" class="filter_opts" />Music</li>
+				<li class="opts"><input type="checkbox" id="Videogame" class="filter_opts" />Videogames</li>
+				<li class="opts"><input type="checkbox" id="Game" class="filter_opts" />Board and Card Games</li>
 				<br />
-				<li class="opts"><input type="checkbox" id="checked_in" class="filter_opts" />Available</li>
-				<li class="opts"><input type="checkbox" id="checked_out" class="filter_opts" />On Loan</li>
+				<li class="opts"><input type="checkbox" id="in" class="filter_opts" />Available</li>
+				<li class="opts"><input type="checkbox" id="out" class="filter_opts" />On Loan</li>
+				<li><input type="button" value="Filter" onclick="handleInput('filter');" /></li>
 			</ul>
 		</div>
 		
 		<div id="output"></div>
 		
 	</body>
-	<script src="data.js"></script>
-	<script src="display.js"></script>
-	<script src="search.js"></script>
-	<script src="sort.js"></script>
+	<script language="JavaScript" type="text/javascript" src="data.js"></script>
+	<script language="JavaScript" type="text/javascript" src="handle.js"></script>
+	<script language="JavaScript" type="text/javascript" src="display.js" onload="manageFilterOpts(); displayMedia(library_content);"></script>
+	<script language="JavaScript" type="text/javascript" src="search.js"></script>
+	<script language="JavaScript" type="text/javascript" src="sort.js"></script>
+	<script language="JavaScript" type="text/javascript" src="filter.js"></script>
 </html>

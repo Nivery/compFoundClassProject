@@ -1,5 +1,7 @@
 function sortMedia(media_to_sort) {
+
      var sort_opt = document.getElementById('sort_by').selectedIndex;
+ 	
 	if (sort_opt === 0) {
 		//sort by title
 		media_to_sort.sort(function(a,b) {var x = a.title.toLowerCase(); var y = b.title.toLowerCase(); return x < y ? -1: x > y ? 1 : 0;});
@@ -19,5 +21,5 @@ function sortMedia(media_to_sort) {
 		//sort by year
 		media_to_sort.sort(function(a,b) {return a.year - b.year;});
 	}
-	displayMedia(media_to_sort);
+	filterMedia(media_to_sort);
 }

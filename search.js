@@ -28,15 +28,19 @@ function searchMedia(media_to_search) {
 	//------LOOK FOR STUFF-------
 	// For each term in the user's input string, check to see if that term matches any 
 	// of the properties of every object in the library_content array
+	// eventually, I want to make this loop skip the type, age_group, and in_out categories, which can all be handled by filter anyway
 	if (search_type === 0) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
 			var term = new RegExp(search_terms[i], 'i');
+
 			for (var a = 0; a < media_to_search.length; a++) {
-				// This used to be a for each (variable in object) loop. Apparently for each only works in Firefox. This should work everywhere.
+				// for each (variable in object) is a nifty way to iterate over the value of each object property
 				for (x in media_to_search[a]) {
-    				if (media_to_search[a][x].match(term)) {
-						search_indices.push(a);
+					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover') {
+						if (media_to_search[a][x].match(term)) {
+							search_indices.push(a);
+						}
 					}
 				}
 			}
@@ -101,5 +105,5 @@ function searchMedia(media_to_search) {
 		search_results.push(media_to_search[search_indices[recur[i][0]]]);
 	}
 	
-	displayMedia(search_results);
+	filterMedia(search_results);
 }

@@ -7,6 +7,7 @@ b1 = {
 		year:'2010',
 		type:'Nonfiction',
 		age_group:'Adult',
+		media:'Book',
 		call_number:'',
 		in_out:'in',
 		artwork:''
@@ -21,6 +22,7 @@ b2 = {
 		year:'2012',
 		type:'Nonfiction',
 		age_group:'Adult',
+		media:'Book',
 		call_number:'',
 		in_out:'in',
 		artwork:''
@@ -35,10 +37,12 @@ b3 = {
 		year:'1971',
 		type:'Fiction',
 		age_group:'Children',
+		media:'Book',
 		call_number:'',
 		in_out:'in',
 		artwork:'Dr. Seuss'
 	 };
+	 
 ba1 = {
 		cover:'',
 		title:'The Good Book',
@@ -48,6 +52,7 @@ ba1 = {
 		year:'2009',
 		type:'Nonfiction',
 		age_group:'Adult',
+		media:'Audio_Book',
 		call_number:'',
 		in_out:'in',
 	  };
@@ -60,6 +65,7 @@ bg1	= {
 		year:'2004',
 		type:'Fiction',
 		age_group:'Adult',
+		media:'Graphic_Book',
 		call_number:'',
 		in_out:'in',
 		artwork:'Bryan Lee O\'Malley',
@@ -75,6 +81,7 @@ be1 = {
 		year:'2012',
 		type:'Fiction',
 		age_group:'Adult',
+		media:'Ebook',
 		call_number:'',
 		in_out:'in',
 		artwork:''
@@ -88,6 +95,7 @@ v1 = {
 		year:'1993',
 		type:'Fiction',
 		age_group:'YA',
+		media:'Video',
 		call_number:'',
 		in_out:'in',
 		writers:'David Kirschner, Mick Garris, Neil Cuthbert',
@@ -102,6 +110,7 @@ m1 = {
 		year:'2012',
 		type:'Music',
 		age_group:'Adult',
+		media:'Music',
 		call_number:'',
 		in_out:'in',
 		line_up:'John Darneille, Jon Wurster, Peter Hughes',
@@ -116,6 +125,7 @@ p1 = {
 		year:'2012',
 		type:'Nonfiction',
 		age_group:'Adult',
+		media:'Periodical',
 		call_number:'',
 		in_out:'in',
 		volume:'',
@@ -123,7 +133,7 @@ p1 = {
 	 };
 	 
 g1 = {
-cover:'',
+		cover:'',
 		title:'Trivial Pursuit',
 		subtitle:'Genus 5',
 		creator:'Horn Abbot',
@@ -131,6 +141,7 @@ cover:'',
 		year:'2000',
 		type:'Nonfiction',
 		age_group:'Adult',
+		media:'Game',
 		call_number:'',
 		in_out:'in',
 		format:'Board',
@@ -146,6 +157,7 @@ gv1 = {
 		year:'2009',
 		type:'Fiction',
 		age_group:'Adult',
+		media:'Videogame',
 		call_number:'',
 		in_out:'in',
 		platform:'Wii',
@@ -154,6 +166,23 @@ gv1 = {
 };
 	 
 // Once we have our items set up as objects, we can dump them into an array and use that for searching and sorting
+// This array should not be altered by any functions that have to do with searching/sorting/filtering/displaying the library
 var library_content = [b1,b2,b3,ba1,bg1,be1,v1,m1,p1,g1,gv1];
 
-var current_display = [];
+// This array will be altered by displayMedia(), based on the media array displayMedia() most is showing.
+// !!! Use the slice method to make a copy of the array. Standard assigning with arrays basically just gives
+// the original array an additional name. I learned this the hard way, when displayMedia() kept devouring
+// library_content, current_display, and output_arr because they all referenced the same array (Devouring 
+// ouput_arr was planned, not so much with the other two). !!!
+var current_display = library_content.slice();
+
+// Add a method to the Array object to check to see if the array contains a particular element, 
+// because JavaScript is too dumb to do this itself, this method is used in filterMedia()
+Array.prototype.includes = function(obj) {
+    for (var i = 0; i < this.length; i++) {
+		if (this[i] === obj) {
+			return true;
+		}
+	}
+	return false;
+}

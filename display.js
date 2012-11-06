@@ -1,8 +1,9 @@
-function displayMedia(output_arr) {
-
-    // How many items per shelf
-	var shelf_length = 3;
+function displayMedia(input_arr) {
+    var output_arr = input_arr.slice();
 	
+	// How many items per shelf
+	var shelf_length = 3;
+		
 	// The shelves
 	var das_shelves = [];
 	
@@ -10,7 +11,7 @@ function displayMedia(output_arr) {
 	
 	// Set the global current_display array with the value of our output_arr so that
 	// search, sort, and filter can work within the current results, whenever that gets implemented
-	current_display = output_arr;
+	current_display = input_arr.slice();
 	
 	// Split up the output_arr based on shelf_length
 	// splice removes elements from output_arr and returns an array with the length specified by shelf_length
@@ -18,14 +19,33 @@ function displayMedia(output_arr) {
 		das_shelves[i] = output_arr.splice(0,shelf_length);
 		i++;
 	}
-	
+			
 	// This is just a place holder so that we have some output. It will need to be replaced eventually.
+    // This also spits out das_shelves[q][x].title is undefined to the error console occassionally.
 	document.getElementById('output').innerHTML = '';
 	for (var q = 0; q < das_shelves.length; q++) {
 		document.getElementById('output').innerHTML += '<hr /><ul>';
-		for (var x in das_shelves[q]) {
+		for (var x = 0; x < shelf_length; x++) {
 			document.getElementById('output').innerHTML += '<li class="book_shelf">' + das_shelves[q][x].title + '</li>';
 		}
 		document.getElementById('output').innerHTML += '</ul>';
 	}
 }
+
+
+//Handles display and disabling/enabling of filter options
+function manageFilterOpts() {
+	var filter_opts = document.getElementsByClassName('filter_opts');
+	var filter_opts_text = document.getElementsByClassName('opts');
+	if (document.getElementById('all').checked === true) {
+		for (var i = 0; i < filter_opts.length; i++) {
+			filter_opts[i].disabled = true;
+			filter_opts_text[i].style.color = 'gray';
+		}
+	} else {
+		for (var i = 0; i < filter_opts.length; i++) {
+			filter_opts[i].disabled = false;
+			filter_opts_text[i].style.color = 'black';
+		}
+	}
+ }
