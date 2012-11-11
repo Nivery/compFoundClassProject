@@ -1,5 +1,5 @@
 b1 = { 
-    	cover:'',
+    	cover:'an_ethics_of_interrogation.jpg',
 		title:'An Ethics of Interrogation',
 		subtitle:'',
 		creator:'Michael Skerker',
@@ -10,11 +10,12 @@ b1 = {
 		media:'Book',
 		call_number:'',
 		in_out:'in',
-		artwork:''
+		artwork:'',
+        reference: 'b1'
 	 };
 	 
 b2 = {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'JavaScript: Pocket Reference, 3rd ed.',
 		subtitle:'',
 		creator:'David Flanagan',
@@ -25,11 +26,12 @@ b2 = {
 		media:'Book',
 		call_number:'',
 		in_out:'in',
-		artwork:''
+		artwork:'',
+        reference: 'b2'
 	 };
 
 b3 = {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'The Lorax',
 		subtitle:'',
 		creator:'Dr. Seuss',
@@ -40,11 +42,12 @@ b3 = {
 		media:'Book',
 		call_number:'',
 		in_out:'in',
-		artwork:'Dr. Seuss'
+		artwork:'Dr. Seuss',
+        reference: 'b3'
 	 };
 	 
 ba1 = {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'The Good Book',
 		subtitle:'The Bizarre, Hilarious, Disturbing, Marvelous, and Inspiring Things I Learned When I Read Every Single Word of the Bible',
 		creator:'David Plotz',
@@ -55,9 +58,10 @@ ba1 = {
 		media:'Audio_Book',
 		call_number:'',
 		in_out:'in',
+        reference: 'ba1'
 	  };
 bg1	= {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'Scott Pilgrim\'s Precious Little Life',
 		subtitle:'',
 		creator:'Bryan Lee O\'Malley',
@@ -70,10 +74,11 @@ bg1	= {
 		in_out:'in',
 		artwork:'Bryan Lee O\'Malley',
 		volume:'1',
-		issue:''
+		issue:'',
+        reference: 'bg1'
 	  };
 be1 = {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'Pride and Prejudice',
 		subtitle:'',
 		creator:'Jane Austen',
@@ -84,10 +89,11 @@ be1 = {
 		media:'Ebook',
 		call_number:'',
 		in_out:'in',
-		artwork:''
+		artwork:'',
+        reference: 'be1'
 	  };
 v1 = {
-		cover:'',
+		cover:'hocus_pocus.jpg',
 		title:'Hocus Pocus',
 		subtitle:'',
 		creator:'Kenny Ortega',
@@ -99,10 +105,11 @@ v1 = {
 		call_number:'',
 		in_out:'in',
 		writers:'David Kirschner, Mick Garris, Neil Cuthbert',
-		main_cast:'Bette Midler, Sarah Jessica Parker, Kathy Najimy, Omri Katz, Thora Birch, Vinessa Shaw'
+		main_cast:'Bette Midler, Sarah Jessica Parker, Kathy Najimy, Omri Katz, Thora Birch, Vinessa Shaw',
+        reference: 'v1'
 	 };
 m1 = {
-		cover:'',
+		cover:'transcendental_youth.jpg',
 		title:'Transcendental Youth',
 		subtitle:'',
 		creator:'The Mountain Goats',
@@ -114,10 +121,11 @@ m1 = {
 		call_number:'',
 		in_out:'in',
 		line_up:'John Darneille, Jon Wurster, Peter Hughes',
-		track_list:'Amy, aka Spent Gladiator 1 | Lakeside View Apartment Suites | Cry For Judas | Harlem Roulette | White Cedar | Until I Am Whole | Night Light | The Diaz Brothers | Counterfeit Florida Plates | In Memory of Satan | Spent Gladiator 2 | Transcendental Youth'
+		track_list:'Amy, aka Spent Gladiator 1 | Lakeside View Apartment Suites | Cry For Judas | Harlem Roulette | White Cedar | Until I Am Whole | Night Light | The Diaz Brothers | Counterfeit Florida Plates | In Memory of Satan | Spent Gladiator 2 | Transcendental Youth',
+        reference: 'm1'
 	 };
 p1 = {
-		cover:'',
+		cover:'an_ethics_of_interrogation.jpg',
 		title:'Saveur',
 		subtitle:'',
 		creator:'James Oseland',
@@ -129,11 +137,12 @@ p1 = {
 		call_number:'',
 		in_out:'in',
 		volume:'',
-		issue:'149'
+		issue:'149',
+        reference: 'p1'
 	 };
 	 
 g1 = {
-		cover:'',
+		cover:'trivial_pursuit.jpg',
 		title:'Trivial Pursuit',
 		subtitle:'Genus 5',
 		creator:'Horn Abbot',
@@ -145,11 +154,12 @@ g1 = {
 		call_number:'',
 		in_out:'in',
 		format:'Board',
-		genre:'Trivia'
+		genre:'Trivia',
+        reference: 'g1'
 };
 
 gv1 = {
-		cover:'',
+		cover:'dead_space_extraction.jpg',
 		title:'Dead Space',
 		subtitle:'Extraction',
 		creator:'Electronic Arts',
@@ -161,8 +171,8 @@ gv1 = {
 		call_number:'',
 		in_out:'in',
 		platform:'Wii',
-		genre:'Shooter'
-		
+		genre:'Shooter',
+        reference: 'gv1'		
 };
 	 
 // Once we have our items set up as objects, we can dump them into an array and use that for searching and sorting

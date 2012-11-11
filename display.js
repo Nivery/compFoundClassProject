@@ -2,10 +2,10 @@ function displayMedia(input_arr) {
     var output_arr = input_arr.slice();
 	
 	// How many items per shelf
-	var shelf_length = 3;
+	var shelf_length = 3; //temporarily gloabl
 		
 	// The shelves
-	var das_shelves = [];
+	var das_shelves = []; //temporarily global
 	
 	var i = 0;
 	
@@ -26,8 +26,11 @@ function displayMedia(input_arr) {
 	for (var q = 0; q < das_shelves.length; q++) {
 		document.getElementById('output').innerHTML += '<hr /><ul>';
 		for (var x = 0; x < shelf_length; x++) {
-			document.getElementById('output').innerHTML += '<li class="book_shelf">' + das_shelves[q][x].title + '</li>';
-		}
+            temp = das_shelves[q][x]; 
+			document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onclick="onMediaClick(' + temp.reference + ');" /></li>';
+		    //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 /></li>';
+            //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onclick="testShelves();" /></li>';
+        }
 		document.getElementById('output').innerHTML += '</ul>';
 	}
 }

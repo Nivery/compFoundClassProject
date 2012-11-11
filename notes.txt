@@ -1,0 +1,7 @@
+Some quick notes on program flow/structure as it currently stands:
+                             /--> searchMedia()---->filterMedia()--\
+User input --> handleInput()-->sortMedia()------/                   -->displayMedia()--> Output to user
+           \                 \-->filterMedia()---------------------/
+            \-->manageFilterOpts()--> Output to user (enable/disable filter options when clicking on "All")
+
+Alternatively, filtering could happen before searching or sorting. I'm not sure which option is better.
