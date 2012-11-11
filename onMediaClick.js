@@ -15,6 +15,7 @@ function onMediaClick(MediaItem){
     //Clear existing content
     output.innerHTML = '';
     
+    //Don't display these properties
     noDisplayProperties = ['reference', 'cover'];
     
     
@@ -26,13 +27,19 @@ function onMediaClick(MediaItem){
    
    output.innerHTML += "<br><br>";
     
-    output.innerHTML += '<button type="button" onclick="restore()">Go back</button>';
+  output.innerHTML += '<button type="button" onclick="restore()">Go back</button>';
+  
+  mediaItem = MediaItem;
+  
+  output.innerHTML += '<button type="button" onclick="editEntry(' + 'mediaItem' + ');">Edit entry</button>';
 }
 
+//Returns page to state before media click
 function restore(){
     output.innerHTML = OldOutput; 
 }
 
+//Ignore
 function testShelves(){
         for (var q = 0; q < das_shelves.length; q++) {
 		    for (var x = 0; x < shelf_length; x++) {
@@ -40,4 +47,46 @@ function testShelves(){
 		    }
         }
                 
+}
+
+function editEntry(MediaItem){
+    
+
+    //Clear existing content
+    output.innerHTML = '';
+    
+    for (var prop in MediaItem) {
+      if (!noDisplayProperties.includes(prop)){
+        output.innerHTML += "" + prop + ": " + '<input type="text" id="' + prop + '" value="' + MediaItem[prop] + '"</input><br>';
+      }
+    }
+    
+    mediaItem = MediaItem;
+    
+    output.innerHTML += '<button type="button" onclick="restore()">Go back</button>';
+    output.innerHTML += '<button type="button" onclick="saveEntry(mediaItem)">Save entry</button>';
+    
+}
+
+function saveEntry(MediaItem){
+    
+
+    
+    for (var prop in MediaItem) {     
+        
+      if (!noDisplayProperties.includes(prop)){          
+        console.log(prop.toString());
+        temp = document.getElementById(prop);
+        console.log(temp);
+        tempValue = temp.value;
+            if (tempValue != MediaItem[prop]){
+                MediaItem[prop] = tempValue;
+            }
+      }
+      
+  
+    }
+    
+     
+    
 }
