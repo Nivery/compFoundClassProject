@@ -1,19 +1,20 @@
-/*This function should save the current contents of #output into a variable, then replace it with the details for a particular book.  
-Upon clicking back, the user gets his/her old output. */
+/*The onMediaClick function should save the current contents of #output into a variable, then replace it with the details for a particular book.  
+Upon clicking back, the user gets his/her old output.  editEntry allows  users to make changes to an object's data.  saveEntry saves an entry. */
 
-function onMediaClick(MediaItem){
+function onMediaClick(MediaItem, origin){
     
-    //Debugging statement
-    //console.log("onMediaClick called");
-   // console.log(MediaItem);
+
     
     output = document.getElementById('output');
     
-    //Store old content for back button
-    OldOutput = output.innerHTML; 
     
-    //Clear existing content
-    output.innerHTML = '';
+    //Store old content for back button if came from shelves
+    if (origin != 1){
+        OldOutput = output.innerHTML; 
+    }
+    
+    //Clear existing content, begin list
+    output.innerHTML = '<ul>';
     
     //Don't display these properties
     noDisplayProperties = ['reference', 'cover'];
@@ -21,17 +22,18 @@ function onMediaClick(MediaItem){
     
     for (var prop in MediaItem) {
       if (!noDisplayProperties.includes(prop)){
-        output.innerHTML += "" + prop + ": " + MediaItem[prop] + "<br>";
+        output.innerHTML += "<li><em>" + prop + ":</em> " + MediaItem[prop] + "<br></li>";
       }
     }
    
    output.innerHTML += "<br><br>";
     
-  output.innerHTML += '<button type="button" onclick="restore()">Go back</button>';
+   output.innerHTML += '<button type="button" onclick="restore()">Go back</button>';
   
-  mediaItem = MediaItem;
+   //Was having trouble passing parameters without doing this
+   mediaItem = MediaItem;
   
-  output.innerHTML += '<button type="button" onclick="editEntry(' + 'mediaItem' + ');">Edit entry</button>';
+   output.innerHTML += '<button type="button" onclick="editEntry(' + 'mediaItem' + ');">Edit entry</button>';
 }
 
 //Returns page to state before media click
@@ -57,7 +59,7 @@ function editEntry(MediaItem){
     
     for (var prop in MediaItem) {
       if (!noDisplayProperties.includes(prop)){
-        output.innerHTML += "" + prop + ": " + '<input type="text" id="' + prop + '" value="' + MediaItem[prop] + '"</input><br>';
+        output.innerHTML += "<em>" + prop + ":</em> " + '<input type="text" id="' + prop + '" value="' + MediaItem[prop] + '"</input><br>';
       }
     }
     
@@ -87,6 +89,8 @@ function saveEntry(MediaItem){
   
     }
     
-     
+    mediaItem = MediaItem  
+    
+    onMediaClick(mediaItem, 1); 
     
 }
