@@ -1,3 +1,6 @@
+//Temporary global
+labelTracker = "start";
+
 b1 = { 
     	cover:'an_ethics_of_interrogation.jpg',
 		title:'An Ethics of Interrogation',
@@ -196,3 +199,4 @@ Array.prototype.includes = function(obj) {
 	}
 	return false;
 }
+

@@ -2,10 +2,10 @@ function displayMedia(input_arr) {
     var output_arr = input_arr.slice();
 	
 	// How many items per shelf
-	var shelf_length = 3; //temporarily gloabl
+	var shelf_length = 3; 
 		
 	// The shelves
-	var das_shelves = []; //temporarily global
+	var das_shelves = []; 
 	
 	var i = 0;
 	
@@ -24,12 +24,21 @@ function displayMedia(input_arr) {
     // This also spits out das_shelves[q][x].title is undefined to the error console occassionally.
 	document.getElementById('output').innerHTML = '';
 	for (var q = 0; q < das_shelves.length; q++) {
+        
+        console.log("1");
 		document.getElementById('output').innerHTML += '<hr /><ul>';
 		for (var x = 0; x < shelf_length; x++) {
+
             temp = das_shelves[q][x]; 
-			document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onclick="onMediaClick(' + temp.reference + ');" /></li>';
+			document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
 		    //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 /></li>';
             //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onclick="testShelves();" /></li>';
+        }
+        document.getElementById('output').innerHTML += '<br>';
+        console.log("2");
+        for (var x = 0; x < shelf_length; x++) {
+            temp = das_shelves[q][x]; 
+			document.getElementById('output').innerHTML += '<div class="bookLabel" id="' + temp.reference + '"> </div>';
         }
 		document.getElementById('output').innerHTML += '</ul>';
 	}
@@ -52,3 +61,14 @@ function manageFilterOpts() {
 		}
 	}
  }
+ 
+ function displayTitle(obj){
+     if (labelTracker == 'start'){
+         labelTracker = '';
+     }
+     else {
+         label.innerHTML = '';
+     }
+     label = document.getElementById(obj.reference);
+     label.innerHTML = "" + obj.title;
+}

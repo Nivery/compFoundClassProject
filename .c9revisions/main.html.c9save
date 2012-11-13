@@ -40,3 +40,11 @@
 {"ts":1352758227894,"patch":[[{"diffs":[[0,"aramond;"],[1," padding-bottom: 3px;"],[0,"}\n      "]],"start1":412,"start2":412,"length1":16,"length2":37}]],"length":4987,"saved":false}
 {"ts":1352758241681,"patch":[[{"diffs":[[0," font-fa"],[-1,"ce"],[1,"mily"],[0,": Garamo"]],"start1":399,"start2":399,"length1":18,"length2":20}]],"length":4989,"saved":false}
 {"ts":1352758869501,"patch":[[{"diffs":[[0,": none; "],[1,"padding-bottom: 3px;}\n        \n        body {"],[0,"font-fam"]],"start1":392,"start2":392,"length1":16,"length2":61},{"diffs":[[0,"Garamond"],[-1,"; padding-bottom: 3px"],[0,";}\n     "]],"start1":458,"start2":458,"length1":37,"length2":16}]],"length":5013,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1352834616431,"patch":[[{"diffs":[[0,"pts "],[-1,"{margin: 0"],[1,"\n        \n        .bookLabel {display: inline;"],[0,"}\n  "]],"start1":667,"start2":667,"length1":18,"length2":54}]],"length":5049,"saved":false}
+{"ts":1352834899695,"patch":[[{"diffs":[[0," inline;"],[1," height: 50px width: 200px;"],[0,"}\n      "]],"start1":709,"start2":709,"length1":16,"length2":43}]],"length":5076,"saved":false}
+{"ts":1352835151579,"patch":[[{"diffs":[[0,"ht: 50px"],[1,";"],[0," width: "]],"start1":722,"start2":722,"length1":16,"length2":17}]],"length":5077,"saved":false}
+{"ts":1352835221840,"patch":[[{"diffs":[[0,"   \n"],[-1,"        .opts \n        \n"],[0,"    "]],"start1":653,"start2":653,"length1":32,"length2":8}]],"length":5053,"saved":false}
+{"ts":1352835383180,"patch":[[{"diffs":[[0,"h: 200px"],[1," !important"],[0,";}\n     "]],"start1":712,"start2":712,"length1":16,"length2":27}]],"length":5064,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1352835595698,"patch":[[{"diffs":[[0,": inline"],[1,"-block"],[0,"; height"]],"start1":684,"start2":684,"length1":16,"length2":22}]],"length":5070,"saved":false}
+{"ts":1352835617576,"patch":[[{"diffs":[[0,"e-block;"],[1," margin-right: 20px;"],[0," height:"]],"start1":691,"start2":691,"length1":16,"length2":36}]],"length":5090,"saved":false}
+{"ts":1352835654346,"patch":[[{"diffs":[[0,"right: 20px;"],[1," padding: 4px;"],[0," height: 50p"]],"start1":707,"start2":707,"length1":24,"length2":38}]],"length":5104,"saved":false}

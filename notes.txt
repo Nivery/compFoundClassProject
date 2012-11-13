@@ -5,3 +5,5 @@ User input --> handleInput()-->sortMedia()------/                   -->displayMe
             \-->manageFilterOpts()--> Output to user (enable/disable filter options when clicking on "All")
 
 Alternatively, filtering could happen before searching or sorting. I'm not sure which option is better.
+
+Initial program output is triggered by the onload property of the script display.js at the bottom of main.html
