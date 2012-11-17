@@ -12,7 +12,8 @@ b1 = {
 		age_group:'Adult',
 		media:'Book',
 		call_number:'',
-		in_out:'in',
+		in_out:'out',
+        on_loan:'yes',
 		artwork:'',
         reference: 'b1'
 	 };
@@ -28,7 +29,8 @@ b2 = {
 		age_group:'Adult',
 		media:'Book',
 		call_number:'',
-		in_out:'in',
+		in_out:'in',  
+        on_loan:'no',
 		artwork:'',
         reference: 'b2'
 	 };
@@ -45,6 +47,7 @@ b3 = {
 		media:'Book',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		artwork:'Dr. Seuss',
         reference: 'b3'
 	 };
@@ -61,6 +64,7 @@ ba1 = {
 		media:'Audio_Book',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
         reference: 'ba1'
 	  };
 bg1	= {
@@ -75,6 +79,7 @@ bg1	= {
 		media:'Graphic_Book',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		artwork:'Bryan Lee O\'Malley',
 		volume:'1',
 		issue:'',
@@ -92,6 +97,7 @@ be1 = {
 		media:'Ebook',
 		call_number:'',
 		in_out:'in',
+        on_loan:'yes',
 		artwork:'',
         reference: 'be1'
 	  };
@@ -107,6 +113,7 @@ v1 = {
 		media:'Video',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		writers:'David Kirschner, Mick Garris, Neil Cuthbert',
 		main_cast:'Bette Midler, Sarah Jessica Parker, Kathy Najimy, Omri Katz, Thora Birch, Vinessa Shaw',
         reference: 'v1'
@@ -122,7 +129,8 @@ m1 = {
 		age_group:'Adult',
 		media:'Music',
 		call_number:'',
-		in_out:'in',
+		in_out:'out',
+        on_loan:'no',
 		line_up:'John Darneille, Jon Wurster, Peter Hughes',
 		track_list:'Amy, aka Spent Gladiator 1 | Lakeside View Apartment Suites | Cry For Judas | Harlem Roulette | White Cedar | Until I Am Whole | Night Light | The Diaz Brothers | Counterfeit Florida Plates | In Memory of Satan | Spent Gladiator 2 | Transcendental Youth',
         reference: 'm1'
@@ -139,6 +147,7 @@ p1 = {
 		media:'Periodical',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		volume:'',
 		issue:'149',
         reference: 'p1'
@@ -156,6 +165,7 @@ g1 = {
 		media:'Game',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		format:'Board',
 		genre:'Trivia',
         reference: 'g1'
@@ -173,6 +183,7 @@ gv1 = {
 		media:'Videogame',
 		call_number:'',
 		in_out:'in',
+        on_loan:'no',
 		platform:'Wii',
 		genre:'Shooter',
         reference: 'gv1'		

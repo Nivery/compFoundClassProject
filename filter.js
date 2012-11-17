@@ -23,7 +23,7 @@ function filterMedia(media_to_filter) {
 			}
 		}
 		for (var i = 0; i < media_to_filter.length; i++) {
-			if (checked_filters.includes(media_to_filter[i].media) || checked_filters.includes(media_to_filter[i].age_group) || checked_filters.includes(media_to_filter[i].type) || checked_filters.includes(media_to_filter[i].in_out)) {
+			if (checked_filters.includes(media_to_filter[i].media) || checked_filters.includes(media_to_filter[i].age_group) || checked_filters.includes(media_to_filter[i].type) || checked_filters.includes(media_to_filter[i].in_out) || checked_filters.includes(media_to_filter[i].on_loan)) {
 				return_arr.push(media_to_filter[i]);
 			}
 		}

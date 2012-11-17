@@ -1,3 +1,5 @@
+/*Mouseover title information is at the bottom */
+
 function displayMedia(input_arr) {
     var output_arr = input_arr.slice();
 	
@@ -30,8 +32,16 @@ function displayMedia(input_arr) {
 		for (var x = 0; x < shelf_length; x++) {
 
             temp = das_shelves[q][x]; 
-			document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
-		    //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 /></li>';
+            if (temp.in_out === 'out' && temp.on_loan === 'yes') {
+                document.getElementById('output').innerHTML += '<li class="book_shelf" style="border:1px solid #b0c4de">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
+            } else if (temp.in_out === 'out') {
+                document.getElementById('output').innerHTML += '<li class="book_shelf" style="border:1px solid #dcdcdc">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
+            } else if (temp.on_loan === 'no') {
+			    document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
+		    } else if (temp.on_loan === 'yes') {
+                document.getElementById('output').innerHTML += '<li class="book_shelf" style="border:1px solid blue">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onmouseover="displayTitle(' + temp.reference + ');" onclick="onMediaClick(' + temp.reference + ');" /></li>';
+		    }
+            //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 /></li>';
             //document.getElementById('output').innerHTML += '<li class="book_shelf">' + '<img src="covers/' + das_shelves[q][x].cover + '" width=200 height=200 onclick="testShelves();" /></li>';
         }
         document.getElementById('output').innerHTML += '<br>';
