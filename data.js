@@ -13,7 +13,9 @@ b1 = {
 		media:'Book',
 		call_number:'',
 		in_out:'out',
+        out_to:'Martha Stewart',
         on_loan:'yes',
+        loaned_by:'John Doe',
 		artwork:'',
         reference: 'b1'
 	 };
@@ -29,8 +31,10 @@ b2 = {
 		age_group:'Adult',
 		media:'Book',
 		call_number:'',
-		in_out:'in',  
+		in_out:'in', 
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		artwork:'',
         reference: 'b2'
 	 };
@@ -47,7 +51,9 @@ b3 = {
 		media:'Book',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		artwork:'Dr. Seuss',
         reference: 'b3'
 	 };
@@ -64,7 +70,9 @@ ba1 = {
 		media:'Audio_Book',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
         reference: 'ba1'
 	  };
 bg1	= {
@@ -79,7 +87,9 @@ bg1	= {
 		media:'Graphic_Book',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        out_to:'',
 		artwork:'Bryan Lee O\'Malley',
 		volume:'1',
 		issue:'',
@@ -97,7 +107,9 @@ be1 = {
 		media:'Ebook',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'yes',
+        loaned_by:'Taco John',
 		artwork:'',
         reference: 'be1'
 	  };
@@ -113,7 +125,9 @@ v1 = {
 		media:'Video',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		writers:'David Kirschner, Mick Garris, Neil Cuthbert',
 		main_cast:'Bette Midler, Sarah Jessica Parker, Kathy Najimy, Omri Katz, Thora Birch, Vinessa Shaw',
         reference: 'v1'
@@ -130,7 +144,9 @@ m1 = {
 		media:'Music',
 		call_number:'',
 		in_out:'out',
+        out_to:'Borrower McBorrowington',
         on_loan:'no',
+        loaned_by:'',
 		line_up:'John Darneille, Jon Wurster, Peter Hughes',
 		track_list:'Amy, aka Spent Gladiator 1 | Lakeside View Apartment Suites | Cry For Judas | Harlem Roulette | White Cedar | Until I Am Whole | Night Light | The Diaz Brothers | Counterfeit Florida Plates | In Memory of Satan | Spent Gladiator 2 | Transcendental Youth',
         reference: 'm1'
@@ -147,7 +163,9 @@ p1 = {
 		media:'Periodical',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		volume:'',
 		issue:'149',
         reference: 'p1'
@@ -165,7 +183,9 @@ g1 = {
 		media:'Game',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		format:'Board',
 		genre:'Trivia',
         reference: 'g1'
@@ -183,7 +203,9 @@ gv1 = {
 		media:'Videogame',
 		call_number:'',
 		in_out:'in',
+        out_to:'',
         on_loan:'no',
+        loaned_by:'',
 		platform:'Wii',
 		genre:'Shooter',
         reference: 'gv1'		
