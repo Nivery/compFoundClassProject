@@ -33,7 +33,15 @@ media is the type of item. Current legal values are 'Book', 'Ebook', 'Graphic_Bo
 
 call_number is the call number for the item. We're using Dewey decimal. Should be a String value.
 
-in_out shows whether the book is checked in or out. Legal values are 'in' and 'out'.
+in_out shows whether the item is checked in or out. Legal values are 'in' and 'out'.
+
+out_to shows who the item is checked out to. Legal values are the borrower's name or an empty string.
+
+on_loan shows whether the item was borrowed from someone else or not. Legal values are 'yes' and 'no'.
+
+loaned_by shows who an item was borrowed from. Legal values are the loaner's name or a blank string.
+
+reference holds the unique identifier of each item.
 
 Books, graphic books, e-books have the additional type artwork for the artist(s) involved in the work.
 
