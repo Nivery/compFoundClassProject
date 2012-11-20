@@ -1,6 +1,6 @@
 function searchMedia(media_to_search) {
     // search_terms is an array of terms the user wants to search for. We initialize it here to have it ready.
-	var search_terms = [];
+    var search_terms = [];
 	
 	var search_type = document.getElementById('search_type').selectedIndex;
 	
@@ -20,24 +20,25 @@ function searchMedia(media_to_search) {
 	// If user input is not empty or only white space, split input at whitespace and assign the resulting terms to search_terms
 	// We do this to prevent a user from entering nothing or a space and returning the entire catalog
 	if (document.getElementById('search').value !== '' && document.getElementById('search').value.match(/\S/)) {
-		search_terms = document.getElementById('search').value.split(/\s+/);
+		//create an array of search terms by using a custom function (found below) to split the user input string
+		search_terms = splitForSearch(document.getElementById('search').value);
 	} else {
 		return;
 	}
 	
 	//------LOOK FOR STUFF-------
 	// For each term in the user's input string, check to see if that term matches any 
-	// of the properties of every object in the library_content array
-	// eventually, I want to make this loop skip the type, age_group, and in_out categories, which can all be handled by filter anyway
+	// of the selected properties of every object in the library_content array
 	if (search_type === 0) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
 			var term = new RegExp(search_terms[i], 'i');
-
+				
 			for (var a = 0; a < media_to_search.length; a++) {
 				// for each (variable in object) is a nifty way to iterate over the value of each object property
 				for (x in media_to_search[a]) {
-					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover') {
+					// exclude object properties from the search that it doesn't really make sense to search
+					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan') {
 						if (media_to_search[a][x].match(term)) {
 							search_indices.push(a);
 						}
@@ -45,6 +46,7 @@ function searchMedia(media_to_search) {
 				}
 			}
 		}
+	// Search by creator
 	} else if (search_type === 1) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
@@ -55,6 +57,7 @@ function searchMedia(media_to_search) {
 				}
 			}
 		}
+	// Search by title
 	} else if (search_type === 2) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
@@ -65,6 +68,7 @@ function searchMedia(media_to_search) {
 				}
 			}
 		}
+	// Search by year
 	} else if (search_type === 3) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
@@ -106,4 +110,54 @@ function searchMedia(media_to_search) {
 	}
 	
 	filterMedia(search_results);
+}
+
+
+// This ugly little hand-rolled function allows us to treat a quoted string ("like this one")
+// as a single search term rather than multiple search terms. Currently, this function only 
+// recognizes double-quoted strings as units because that's easier than adding a bit to parse
+// whether a single quote is an apostrophe or quote mark. This behavior may change, if there's time.
+//
+// If a search string includes an unclosed quotation mark ("quoted string without closing quote) 
+// splitForSearch will treat everything after the opening quote as a quoted string. This is either
+// an annoying bug or a nifty short-hand depending on your perspective.
+
+function splitForSearch(str_to_split) {
+	//split the user's input string into an array of single characters
+	var split_arr = str_to_split.split('')
+	var temp_arr = [];
+	var output_arr = [];
+	
+	while (split_arr[0] !== undefined) {
+		// Until we encounter a space pile add any unquoted words to temp_arr, which will become a string later
+		if (split_arr[0].match(/[^"]/)) {
+			while (split_arr[0] !== undefined && split_arr[0].match(/[^\s]/)) {
+				temp_arr.push(split_arr.shift());
+			}
+			// Once we encounter a space, dump it out into the ether
+			split_arr.shift();
+		//pile letters and spaces onto temp_arr to be restringified below
+		} else if (split_arr[0].match(/"/)) {
+			//dump the opening quote
+			split_arr.shift();
+			while (split_arr[0] !== undefined && split_arr[0].match(/[^"]/)) {
+				temp_arr.push(split_arr.shift());
+			}
+			//dump the closing quote
+			split_arr.shift();
+		// Catch any spaces left after a quoted string, this is safer than dumping shifting two elements off
+		// split_arr in the quoted-string if because it prevents ("quoted string"term2) to be ['quoted string', 'term2']
+		// rather than ['quoted string', 'erm2']. This will also catch any spaces missed through other ways.
+		} else if (split_arr[0] !== undefined && split_arr[0].match(/\s/)) {
+			split_arr.shift();
+		}
+		// Turn temp_arr into a string and push it onto the output array if it's not empty
+		// Pushing an empty temp_arr onto output_arr will result in a search that matches everything (double-plus ungood)
+		if (temp_arr.length > 0) {
+			output_arr.push(temp_arr.join(''));
+		}
+		//Blank out temp array for the next iteration of the loop
+		temp_arr = [];
+	}
+	return output_arr;
 }
