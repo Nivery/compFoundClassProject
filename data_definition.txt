@@ -33,6 +33,9 @@ media is the type of item. Current legal values are 'Book', 'Ebook', 'Graphic_Bo
 
 call_number is the call number for the item. We're using Dewey decimal. Should be a String value.
 
+tags is any arbitrary information a user wants to add for an item. Any string should be a legal value. Individual tags should be 
+separated by commas with or without a space between a comma and the next tag.
+
 in_out shows whether the item is checked in or out. Legal values are 'in' and 'out'.
 
 out_to shows who the item is checked out to. Legal values are the borrower's name or an empty string.

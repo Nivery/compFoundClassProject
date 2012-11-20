@@ -79,6 +79,16 @@ function searchMedia(media_to_search) {
 				}
 			}
 		}
+	} else if (search_type === 4) {
+    	for (var i = 0; i < search_terms.length; i++) {	
+			// convert the search term into a regular expression for case-insensitive partial matching
+			var term = new RegExp(search_terms[i], 'i');
+			for (var a = 0; a < media_to_search.length; a++) {
+				if (media_to_search[a].tags.match(term)) {
+					search_indices.push(a);	
+				}
+			}
+		}
 	}
 	
 	//------RANK SEARCH RESULTS-------
