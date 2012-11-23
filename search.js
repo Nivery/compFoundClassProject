@@ -1,3 +1,5 @@
+// searchMedia() now supports "multi-word terms in double quotes" and terms a user wishes to -exclude
+// by prepending such term with a hyphen/minus/negative 
 function searchMedia(media_to_search) {
     // search_terms is an array of terms the user wants to search for. We initialize it here to have it ready.
     var search_terms = [];
@@ -26,16 +28,28 @@ function searchMedia(media_to_search) {
 		return;
 	}
 	
+	var exclude = [];
+	var field_to_search = '';
+	
+	// If a search term is prefaced with a hyphen, add it to the exclude list, otherwise, treat it like a 
+	// regular search term.
+	for (var i = 0; i < search_terms.length; i++) {
+		if (search_terms[i].match(/^-/)) {
+			mustnt = new String(search_terms.splice(i,1));
+			exclude.push(new RegExp(mustnt.substr(1), 'i'));
+		} else { 
+			search_terms[i] = new RegExp(search_terms[i], 'i');
+		}
+	}
 	//------LOOK FOR STUFF-------
 	// For each term in the user's input string, check to see if that term matches any 
 	// of the selected properties of every object in the library_content array
 	if (search_type === 0) {
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
-			var term = new RegExp(search_terms[i], 'i');
+			var term = search_terms[i];
 				
 			for (var a = 0; a < media_to_search.length; a++) {
-				// for each (variable in object) is a nifty way to iterate over the value of each object property
 				for (x in media_to_search[a]) {
 					// exclude object properties from the search that it doesn't really make sense to search
 					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan') {
@@ -45,47 +59,46 @@ function searchMedia(media_to_search) {
 					}
 				}
 			}
+			// Remove any matches that include unwanted terms
+			if (exclude.length > 0) {
+				for (var q = 0; q < exclude.length; q++) {
+					for (var i = 0; i < search_indices.length; i++) {
+						for (var x in media_to_search[search_indices[i]]) {
+							// Have to make sure media_to_search[search_indices[i]][x] isn't undefined or this'll throw an error and crash.
+							if (media_to_search[search_indices[i]][x] !== undefined && media_to_search[search_indices[i]][x].match(exclude[q]) && x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan') {
+								search_indices.splice(i, 1);
+							}
+						}
+					}
+				}
+			}
 		}
+	} else {
 	// Search by creator
-	} else if (search_type === 1) {
+		if (search_type === 1) {
+			field_to_search = 'creator';
+		} else if (search_type === 2) {
+			field_to_search = 'title';
+		} else if (search_type === 3) {
+			field_to_search = 'year';
+		} else if (search_type === 4) {
+			field_to_search = 'tags';
+		}
 		for (var i = 0; i < search_terms.length; i++) {	
 			// convert the search term into a regular expression for case-insensitive partial matching
-			var term = new RegExp(search_terms[i], 'i');
+			var term = search_terms[i];
 			for (var a = 0; a < media_to_search.length; a++) {
-				if (media_to_search[a].creator.match(term)) {
+				if (media_to_search[a][field_to_search].match(term)) {
 					search_indices.push(a);	
 				}
 			}
 		}
-	// Search by title
-	} else if (search_type === 2) {
-		for (var i = 0; i < search_terms.length; i++) {	
-			// convert the search term into a regular expression for case-insensitive partial matching
-			var term = new RegExp(search_terms[i], 'i');
-			for (var a = 0; a < media_to_search.length; a++) {
-				if (media_to_search[a].title.match(term)) {
-					search_indices.push(a);	
-				}
-			}
-		}
-	// Search by year
-	} else if (search_type === 3) {
-		for (var i = 0; i < search_terms.length; i++) {	
-			// convert the search term into a regular expression for case-insensitive partial matching
-			var term = new RegExp(search_terms[i], 'i');
-			for (var a = 0; a < media_to_search.length; a++) {
-				if (media_to_search[a].year.match(term)) {
-					search_indices.push(a);	
-				}
-			}
-		}
-	} else if (search_type === 4) {
-    	for (var i = 0; i < search_terms.length; i++) {	
-			// convert the search term into a regular expression for case-insensitive partial matching
-			var term = new RegExp(search_terms[i], 'i');
-			for (var a = 0; a < media_to_search.length; a++) {
-				if (media_to_search[a].tags.match(term)) {
-					search_indices.push(a);	
+		if (exclude.length > 0) {
+			for (x in exclude) {
+				// Check if media_to_search[search_indices[i]] is undefined so as not to throw errors and die
+				// If something is on our no-no list, remove it from search results
+				if (media_to_search[search_indices[i]] !== undefined && media_to_search[search_indices[i]][field_to_search].match(exclude[x])) {
+					search_indices.splice(i, 1);
 				}
 			}
 		}
@@ -127,6 +140,8 @@ function searchMedia(media_to_search) {
 // as a single search term rather than multiple search terms. Currently, this function only 
 // recognizes double-quoted strings as units because that's easier than adding a bit to parse
 // whether a single quote is an apostrophe or quote mark. This behavior may change, if there's time.
+// Actually, tested single quotes against 5 search engines. None treated single quotes like double quotes,
+// so probably not 'fixing' this since it's industry standard behavior.
 //
 // If a search string includes an unclosed quotation mark ("quoted string without closing quote) 
 // splitForSearch will treat everything after the opening quote as a quoted string. This is either
