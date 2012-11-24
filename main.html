@@ -11,7 +11,7 @@
 			list-style-type: none;
 			margin-right: 20px;
 			padding:4px;
-			border:1px solid black;
+			border:2px solid black;
 		}       
         
         #cpanel {position: fixed; background-color: #20F5DC; bottom: 0px; height: 25%; width: 100%;}
@@ -38,6 +38,7 @@
         				<option value="creator">Author/Artist/Director</option>
         				<option value="title">Title</option>
         				<option value="date">Year</option>
+                        <option value="tags">Tags</option>
         			</select>
         			<input type="submit" value="Search" onclick="handleInput('search');" />
         		</div>
@@ -58,6 +59,9 @@
         			<input type="submit" value="Sort" onclick="handleInput('sort');" />
         			</p>
         		</div>
+                <div id = "reset">
+                    <input type="submit" value="Show All" onclick="displayMedia(library_content.slice());" />
+                </div>
             </div>
     		<div id="sidebar">
     			<h2 style="margin: auto; width: 5%;">View:</h2>
