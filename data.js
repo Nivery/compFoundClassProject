@@ -478,3 +478,7 @@ var library_content = [
             reference: 'gv3'		
     }
 ];
+
+var mediaTypes = [b1, ba1, bg1, be1, v1, m1, p1, g1, gv1];
+    
+

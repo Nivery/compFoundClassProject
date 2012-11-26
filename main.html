@@ -21,6 +21,8 @@
         body {font-family: Garamond;}
         
         .panelColumn {float: left; padding: 5px;}
+        
+        .panelLeft {float: left; padding: 5px;}
          
         #sidebar {float: left; padding-left: 10px;}
         
@@ -30,7 +32,7 @@
             
     </style>
         <div id="cpanel">
-            <div class="panelColumn">
+            <div class="panelLeft">
         		<div id="search_div">
         			<input type="text" id="search" placeholder="search your library" onkeydown="if (event.keyCode===13) handleInput('search');" /> 
         			<select id="search_type">
@@ -62,6 +64,7 @@
         		</div>
                 <div id = "reset">
                     <input type="submit" value="Show All" onclick="displayMedia(library_content.slice());" />
+                    <input type="submit" value="Add Item" onclick="addTitle();" />
                 </div>
             </div>
     		<div id="sidebar">
@@ -113,4 +116,5 @@
 	<script language="JavaScript" type="text/javascript" src="sort.js"></script>
 	<script language="JavaScript" type="text/javascript" src="filter.js"></script>
     <script language="JavaScript" type="text/javascript" src="onMediaClick.js"></script>
+    <script language="JavaScript" type="text/javascript" src="addTitle.js"></script>
 </html>

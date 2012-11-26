@@ -39,6 +39,8 @@ function onMediaClick(MediaItem, origin){
 //Returns page to state before media click
 function restore(){
     output.innerHTML = OldOutput; 
+    manageFilterOpts()
+    displayMedia(library_content);
 }
 
 //Ignore
