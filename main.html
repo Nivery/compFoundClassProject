@@ -5,16 +5,17 @@
 	</head>
 	<body>
 	<style>
-    
+        .book_container {float: left;}
+        
 		.book_shelf {
-			display: inline;
+			display: block;
 			list-style-type: none;
 			margin-right: 20px;
 			padding:4px;
 			border:2px solid black;
 		}       
         
-        #cpanel {position: fixed; background-color: #20F5DC; bottom: 0px; height: 25%; width: 100%;}
+        #cpanel {position: fixed; background-color: #20F5DC; bottom: 0px; height: 25%; width: 100%; overflow: scroll;}
         
         li {list-style-type: none; padding-bottom: 3px;}
         
@@ -22,9 +23,9 @@
         
         .panelColumn {float: left; padding: 5px;}
         
-        .panelLeft {float: left; padding: 5px;}
+        .panelLeft {float: left; padding: 5px; width: 35%;}
          
-        #sidebar {float: left; padding-left: 10px;}
+        #sidebar {float: left; padding-left: 10px; width: 60%}
         
         #output {overflow: scroll; height: 75%;}
         
@@ -33,6 +34,10 @@
     </style>
         <div id="cpanel">
             <div class="panelLeft">
+                <div id = "reset">
+                    <input type="submit" value="Show All" onclick="displayMedia(library_content.slice());" />
+                    <input type="submit" value="Add Item" onclick="addTitle();" />
+                </div>
         		<div id="search_div">
         			<input type="text" id="search" placeholder="search your library" onkeydown="if (event.keyCode===13) handleInput('search');" /> 
         			<select id="search_type">
@@ -62,16 +67,12 @@
         			<input type="submit" value="Sort" onclick="handleInput('sort');" />
         			</p>
         		</div>
-                <div id = "reset">
-                    <input type="submit" value="Show All" onclick="displayMedia(library_content.slice());" />
-                    <input type="submit" value="Add Item" onclick="addTitle();" />
-                </div>
             </div>
     		<div id="sidebar">
-    			<h2 style="margin: auto; width: 5%;">View:</h2>
+    			<!--<h2 style="margin: auto; width: 5%;">View:</h2>-->
     			<ul class="opts" >
-    				<li><input type="checkbox" id="all" checked onclick="manageFilterOpts();" />All</li>
-
+    				<li><input type="checkbox" id="all" checked onclick="manageFilterOpts();" />All
+                    <input type="button" value="Filter" onclick="handleInput('filter');" /></li>
                     <div class="panelColumn">    
         				<li class="opts"><input type="checkbox" id="Adult" class="filter_opts" />Adult</li>
         				<li class="opts"><input type="checkbox" id="YA" class="filter_opts" />Young Adult</li>
@@ -95,13 +96,12 @@
                     </div>
                     <div class="panelColumn"> 
         				<li class="opts"><input type="checkbox" id="Videogame" class="filter_opts" />Videogames</li>
-        				<li class="opts"><input type="checkbox" id="Game" class="filter_opts" />Board and Card Games</li>
+        				<li class="opts"><input type="checkbox" id="Game" class="filter_opts" />Board/Card Games</li>
                     </div>
                     <div class="panelColumn"> 
         				<li class="opts"><input type="checkbox" id="in" class="filter_opts" />Available</li>
         				<li class="opts"><input type="checkbox" id="out" class="filter_opts" />On Loan</li>
-                        <li class="opts"><input type="checkbox" id="yes" class="filter_opts" />Borrowed</li>
-        				<li><input type="button" value="Filter" onclick="handleInput('filter');" /></li>
+                         <li class="opts"><input type="checkbox" id="yes" class="filter_opts" />Borrowed</li>
                     </div>
     			</ul>
     		</div>
