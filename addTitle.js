@@ -1,5 +1,10 @@
 function addTitle(selectedIndex, origin){
     
+    if (addedItems.length == 0){
+        alert("You can't add any more items, man!  (I have the number it's possible to add as this small temporarily.  Please see data.js for more information.");
+        return;
+    }
+    
     var output = document.getElementById('output');
     
     //Store old content for back button if came from shelves
@@ -21,10 +26,12 @@ function addTitle(selectedIndex, origin){
     
     
     for (modelKey in modelObj){
-        output.innerHTML += "<br><em>" + modelKey + ":</em> <input type='text' id='" + modelKey + "'></input>"; 
+        if (modelKey != "reference"){
+            output.innerHTML += "<br><em>" + modelKey + ":</em> <input type='text' id='" + modelKey + "'></input>"; 
+        }
     }  
     
-    
+    //modelObj.cover = 'default.jpg';
     var addSelectObj = document.getElementById('addType');
     
     addSelectObj.selectedIndex = selectedIndex;
@@ -46,11 +53,19 @@ function saveNewItem(){
     
     modelObj = mediaTypes[selectedIndex];
     
-    tempObj = new Object();
+    tempObj = addedItems.pop();
+    console.log("popped item is");
+    console.log(tempObj);
     
     for (modelKey in modelObj){
-        tempField = document.getElementById(modelKey);
-        tempObj[modelKey] = tempField.value;
+         if (modelKey != "reference"){
+            tempField = document.getElementById(modelKey);
+            tempObj[modelKey] = tempField.value;
+            // If the user hasn't provided a cover image, make sure to use the default one.
+            if (modelKey === 'cover' && tempObj[modelKey] === '') {
+                tempObj[modelKey] = 'default.jpg';
+            }
+         }
     }
     
     console.log(tempObj);

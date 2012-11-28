@@ -44,7 +44,7 @@ var library_content = [
             reference: 'b1'
     	 },
     b2 = {
-    		cover:'an_ethics_of_interrogation.jpg',
+    		cover:'javascript.gif',
     		title:'JavaScript: Pocket Reference, 3rd ed.',
     		subtitle:'',
     		creator:'Flanagan, David',
@@ -63,7 +63,7 @@ var library_content = [
             reference: 'b2'
     	 },
     b3 = {
-            cover:'an_ethics_of_interrogation.jpg',
+            cover:'foucault.jpg',
             title:'Foucault',
             subtitle:'A Very Short Introduction',
             creator:'Gutting, Gary',
@@ -82,7 +82,7 @@ var library_content = [
             reference:'b3'
     },
     b4 = {
-            cover:'an_ethics_of_interrogation.jpg',
+            cover:'ruth_brown.jpg',
             title:'The Dismissal of Miss Ruth Brown',
             subtitle:'Civil Rights, Censorship, and the American Library',
             creator:'Robbins, Louise S.',
@@ -101,7 +101,7 @@ var library_content = [
             reference:'b4'
     },
     b5 = {
-            cover:'an_ethics_of_interrogation.jpg',
+            cover:'MentalFlossHistory.jpg',
             title:'The Mental Floss History of the World',
             subtitle:'An Irreverent Romp Through Civilization\'s Best Bits',
             creator:'Sass, Erik and Steve Wiegand',
@@ -120,7 +120,7 @@ var library_content = [
             reference:'b5'
     },
     b6 = {
-            cover:'an_ethics_of_interrogation.jpg',
+            cover:'Bedford.jpg',
             title:'The Bedford Handbook, Eight Edition',
             subtitle:'',
             creator:'Hacker, Diana and Nancy Sommers',
@@ -139,7 +139,7 @@ var library_content = [
             reference:'b6'
     },	 
     ba1 = {
-    		cover:'an_ethics_of_interrogation.jpg',
+    		cover:'good-book.jpg',
     		title:'The Good Book',
     		subtitle:'The Bizarre, Hilarious, Disturbing, Marvelous, and Inspiring Things I Learned When I Read Every Single Word of the Bible',
     		creator:'Plotz, David',
@@ -157,7 +157,7 @@ var library_content = [
             reference: 'ba1'
     	  },
     bg1	= {
-    		cover:'an_ethics_of_interrogation.jpg',
+    		cover:'Scott-Pilgrim1.jpg',
     		title:'Scott Pilgrim\'s Precious Little Life',
     		subtitle:'',
     		creator:'O\'Malley, Bryan Lee',
@@ -178,7 +178,7 @@ var library_content = [
             reference: 'bg1'
     	  },
     bg2 = {
-        	cover:'an_ethics_of_interrogation.jpg',
+        	cover:'lorax.jpg',
     		title:'The Lorax',
     		subtitle:'',
     		creator:'Seuss, Dr.',
@@ -197,7 +197,7 @@ var library_content = [
             reference: 'bg2'
     	 },
     be1 = {
-    		cover:'an_ethics_of_interrogation.jpg',
+    		cover:'default.jpg',
     		title:'Pride and Prejudice',
     		subtitle:'',
     		creator:'Austen, Jane',
@@ -236,7 +236,7 @@ var library_content = [
             reference: 'v1'
     	 },
     v2 = {
-        	cover:'hocus_pocus.jpg',
+        	cover:'PushingDaisies_S1.jpg',
     		title:'Pushing Daisies',
     		subtitle:'The Complete First Season',
     		creator:'Fuller, Bryan',
@@ -256,7 +256,7 @@ var library_content = [
             reference: 'v2'
     	 },
     v3 = {
-            cover:'hocus_pocus.jpg',
+            cover:'PushingDaisies_S2.jpg',
     		title:'Pushing Daisies',
     		subtitle:'The Complete Second Season',
     		creator:'Fuller, Bryan',
@@ -276,7 +276,7 @@ var library_content = [
             reference: 'v3'
     	 },
     v4 = {
-            cover:'hocus_pocus.jpg',
+            cover:'afewgoodmen.jpg',
     		title:'A Few Good Men',
     		subtitle:'',
     		creator:'Reiner, Rob',
@@ -293,10 +293,10 @@ var library_content = [
             loaned_by:'',
     		writers:'Aaron Sorkin',
     		main_cast:'Jack Nicholson, Tom Cruise, Demi Moore, Kevin Bacon, Kiefer Sutherland, Kevin Pollak',
-            reference: 'v2'
+            reference: 'v4'
          },
     v5 = {
-            cover:'hocus_pocus.jpg',
+            cover:'shortc.jpg',
             title:'Short Circuit',
     		subtitle:'',
     		creator:'Badham, John',
@@ -316,7 +316,7 @@ var library_content = [
             reference: 'v5'
     },
     v6 = {
-            cover:'hocus_pocus.jpg',
+            cover:'TheRef.jpg',
     		title:'The Ref',
     		subtitle:'',
     		creator:'Demme, Ted',
@@ -336,7 +336,7 @@ var library_content = [
             reference: 'v6'
     	 },
     v7 = {
-            cover:'hocus_pocus.jpg',
+            cover:'earth.jpg',
     		title:'Earth',
     		subtitle:'The Biography',
     		creator:'Renouf, Jonathan',
@@ -376,7 +376,7 @@ var library_content = [
             reference: 'm1'
     	 },
     p1 = {
-    		cover:'an_ethics_of_interrogation.jpg',
+    		cover:'Saveur_149.jpg',
     		title:'Saveur',
     		subtitle:'',
     		creator:'Oseland, James',
@@ -438,7 +438,7 @@ var library_content = [
             reference: 'gv1'		
     },
     gv2 = {
-            cover:'dead_space_extraction.jpg',
+            cover:'Mario-Kart-Wii.jpg',
     		title:'Mario Kart',
     		subtitle:'',
     		creator:'Nintendo',
@@ -458,7 +458,7 @@ var library_content = [
             reference: 'gv2'		
     },
     gv3 = {
-            cover:'dead_space_extraction.jpg',
+            cover:'wii-play.jpg',
     		title:'Wii Play',
     		subtitle:'',
     		creator:'Nintendo',
@@ -477,8 +477,41 @@ var library_content = [
     		genre:'Sports',
             reference: 'gv3'		
     }
+   
+    
 ];
 
 var mediaTypes = [b1, ba1, bg1, be1, v1, m1, p1, g1, gv1];
     
+//New items are precreated as empty barring the reference property.  At present, you can only create six.  
+ 
+addedItems = new Array();
+ai1  = {
+    reference: 'ai1'
+}
+addedItems.push(ai1);
 
+ai2 = {
+    reference: 'ai2'
+}
+ addedItems.push(ai2);
+ai3  = {
+    reference: 'ai3'
+}
+addedItems.push(ai3);
+
+ai4 = {
+    reference: 'ai4'
+}
+ addedItems.push(ai4); 
+
+ai5  = {
+    reference: 'ai5'
+}
+addedItems.push(ai5);
+ai6 = {
+    reference: 'ai6'
+}
+ addedItems.push(ai6);
+
+    

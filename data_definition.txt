@@ -20,7 +20,8 @@ title contains the title of the work. Any string should be a legal value.
 subtitle is just like title, but for work subtitles. This type may be extraneous.
 
 creator is the name of the person, persons, or organization that created the work. In the case of movies, this is the director.
-In the case of periodicals, this is the editor-in-chief. 
+In the case of periodicals, this is the editor-in-chief. If the creator is a person, the assumed format of their name is Last, First;
+otherwise, creators will be sorted by first name.
 
 provider is the company responsible for producing and/or distributing the work. 
 
