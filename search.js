@@ -34,9 +34,12 @@ function searchMedia(media_to_search) {
 	// If a search term is prefaced with a hyphen, add it to the exclude list, otherwise, treat it like a 
 	// regular search term.
 	for (var i = 0; i < search_terms.length; i++) {
+        console.log(i);
 		if (search_terms[i].match(/^-/)) {
-			mustnt = new String(search_terms.splice(i,1));
-			exclude.push(new RegExp(mustnt.substr(1), 'i'));
+            // This line of code is amazing...and hideous...and amazing
+			exclude.push(new RegExp(search_terms.splice(i,1).join('').substr(1), 'i'));
+            // Since the above line removes an item from the array, decrement i or else this will skip terms *sadness!*
+            i--;
 		} else { 
 			search_terms[i] = new RegExp(search_terms[i], 'i');
 		}
@@ -52,7 +55,7 @@ function searchMedia(media_to_search) {
 			for (var a = 0; a < media_to_search.length; a++) {
 				for (x in media_to_search[a]) {
 					// exclude object properties from the search that it doesn't really make sense to search
-					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan') {
+					if (x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan' && x !== 'reference') {
 						if (media_to_search[a][x].match(term)) {
 							search_indices.push(a);
 						}
@@ -62,11 +65,15 @@ function searchMedia(media_to_search) {
 			// Remove any matches that include unwanted terms
 			if (exclude.length > 0) {
 				for (var q = 0; q < exclude.length; q++) {
+                    continue_label:
 					for (var i = 0; i < search_indices.length; i++) {
 						for (var x in media_to_search[search_indices[i]]) {
-							// Have to make sure media_to_search[search_indices[i]][x] isn't undefined or this'll throw an error and crash.
-							if (media_to_search[search_indices[i]][x] !== undefined && media_to_search[search_indices[i]][x].match(exclude[q]) && x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan') {
-								search_indices.splice(i, 1);
+                            // Have to make sure media_to_search[search_indices[i]][x] isn't undefined or this'll throw an error and crash.
+                            if (media_to_search[search_indices[i]][x] !== undefined && x !== 'in_out' && x !== 'age_group' && x !== 'type' && x !== 'cover' && x !== 'on_loan' && x !== 'reference') {
+							    if (media_to_search[search_indices[i]][x].match(exclude[q])) {
+							    	search_indices.splice(i, 1);
+                                    continue continue_label;
+							    }
 							}
 						}
 					}

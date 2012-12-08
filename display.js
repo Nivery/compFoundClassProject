@@ -9,6 +9,12 @@ function displayMedia(input_arr) {
 	current_display = input_arr.slice();
 
 	document.getElementById('output').innerHTML = '';
+    
+    if (input_arr.length === 0) {
+        document.getElementById('output').innerHTML = '<p>Sorry, no items matched your criteria. Perhaps it was eaten by gremlins.</p>'
+        return;
+    }
+    
     document.getElementById('output').innerHTML += '<ul>';
 	for (var x = 0; x < input_arr.length; x++) { 
 		// This bit of if-else-iness allows us to color-code items based on whether they're borrowed from

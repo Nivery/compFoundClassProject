@@ -9,7 +9,7 @@ function sortMedia(media_to_sort) {
 		//sort by creator
 		// This sort algorithm now assumes that a single author (or the lead author in a multi-author work) has their name arranged
         // thusly: 'Last, First'. 
-        media_to_sort.sort(function(a,b) {var x = a.creator.toLowerCase() var y = b.creator.toLowerCase(); return x < y ? -1: x > y ? 1 : 0;});
+        media_to_sort.sort(function(a,b) {var x = a.creator.toLowerCase(); var y = b.creator.toLowerCase(); return x < y ? -1: x > y ? 1 : 0;});
 	} else if (sort_opt === 2) {
 		//sort by provider
 		media_to_sort.sort(function(a,b) {var x = a.provider.toLowerCase(); var y = b.provider.toLowerCase(); return x < y ? -1: x > y ? 1 : 0;});
