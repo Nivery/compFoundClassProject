@@ -27,6 +27,12 @@ function filterMedia(media_to_filter) {
 				return_arr.push(media_to_filter[i]);
 			}
 		}
+        //Handling the case when nothing is checked
+        if (return_arr.length == 0){
+            displayMedia(media_to_filter);
+            console.log("Getshere");
+            return;
+        }
 		displayMedia(return_arr);
 	} 
 }	

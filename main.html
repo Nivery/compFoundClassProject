@@ -63,51 +63,52 @@
         		
         		<div id="sort">
         			<p>Arrange your collection by: 
-        				<select id="sort_by">
+        				<select id="sort_by" onchange="handleInput('sort');" >
         					<option value="title">Title</option>
         					<option value="creator">Author/Artist/Director</option>
         					<option value="provider">Publisher/Label/Studio</option>
         					<option value="date">Year</option>
                             <option value="media">Item Type</option>
         				</select>
-        			<input type="submit" value="Sort" onclick="handleInput('sort');" />
+        			<!--<input type="submit" value="Sort" onclick="handleInput('sort');" />-->
+                    
         			</p>
         		</div>
             </div>
     		<div id="sidebar">
     			<!--<h2 style="margin: auto; width: 5%;">View:</h2>-->
     			<ul class="opts" >
-    				<li><input type="checkbox" id="all" checked onclick="manageFilterOpts();" />All
-                    <input type="button" value="Filter" onclick="handleInput('filter');" /></li>
+    				<li><input type="checkbox" id="all" onclick="manageFilterOpts(); handleInput('filter');" checked  />All
+                    <!--<input type="button" value="Filter" onclick="handleInput('filter');" />--><b>  &nbsp&nbsp&nbsp&nbsp&nbspFilter by checking the boxes!</b></li>
                     <div class="panelColumn">    
-        				<li class="opts"><input type="checkbox" id="Adult" class="filter_opts" />Adult</li>
-        				<li class="opts"><input type="checkbox" id="YA" class="filter_opts" />Young Adult</li>
-        				<li class="opts"><input type="checkbox" id="Children" class="filter_opts" />Children's</li>
+        				<li class="opts"><input type="checkbox" id="Adult" onclick="handleInput('filter');" class="filter_opts" />Adult</li>
+        				<li class="opts"><input type="checkbox" id="YA" onclick="handleInput('filter');" class="filter_opts" />Young Adult</li>
+        				<li class="opts"><input type="checkbox" id="Children" onclick="handleInput('filter');" class="filter_opts" />Children's</li>
                     </div>
 
                     <div class="panelColumn">   
-    				    <li class="opts"><input type="checkbox" id="Fiction" class="filter_opts" />Fiction</li>
-    				    <li class="opts"><input type="checkbox" id="Nonfiction" class="filter_opts" />Nonfiction</li>
+    				    <li class="opts"><input type="checkbox" id="Fiction" onclick="handleInput('filter');" class="filter_opts" />Fiction</li>
+    				    <li class="opts"><input type="checkbox" id="Nonfiction" onclick="handleInput('filter');" class="filter_opts" />Nonfiction</li>
                     </div>
 
                     <div class="panelColumn">   
-        				<li class="opts"><input type="checkbox" id="Book" class="filter_opts" />Book</li>
-        				<li class="opts"><input type="checkbox" id="Graphic_Book" class="filter_opts" />Graphic Book</li>
-        				<li class="opts"><input type="checkbox" id="Ebook" class="filter_opts" />E-Book</li>
+        				<li class="opts"><input type="checkbox" id="Book" onclick="handleInput('filter');" class="filter_opts" />Book</li>
+        				<li class="opts"><input type="checkbox" id="Graphic_Book" onclick="handleInput('filter');" class="filter_opts" />Graphic Book</li>
+        				<li class="opts"><input type="checkbox" id="Ebook" onclick="handleInput('filter');" class="filter_opts" />E-Book</li>
                     </div>
                     <div class="panelColumn"> 
-        				<li class="opts"><input type="checkbox" id="Audio_Book" class="filter_opts" />Audio Book</li>
-        				<li class="opts"><input type="checkbox" id="Video" class="filter_opts" />Video</li>
-        				<li class="opts"><input type="checkbox" id="Music" class="filter_opts" />Music</li>
+        				<li class="opts"><input type="checkbox" id="Audio_Book" onclick="handleInput('filter');" class="filter_opts" />Audio Book</li>
+        				<li class="opts"><input type="checkbox" id="Video" onclick="handleInput('filter');" class="filter_opts" />Video</li>
+        				<li class="opts"><input type="checkbox" id="Music" onclick="handleInput('filter');" class="filter_opts" />Music</li>
                     </div>
                     <div class="panelColumn"> 
-        				<li class="opts"><input type="checkbox" id="Videogame" class="filter_opts" />Videogames</li>
-        				<li class="opts"><input type="checkbox" id="Game" class="filter_opts" />Board/Card Games</li>
+        				<li class="opts"><input type="checkbox" id="Videogame" onclick="handleInput('filter');" class="filter_opts" />Videogames</li>
+        				<li class="opts"><input type="checkbox" id="Game" onclick="handleInput('filter');" class="filter_opts" />Board/Card Games</li>
                     </div>
                     <div class="panelColumn"> 
-        				<li class="opts"><input type="checkbox" id="in" class="filter_opts" />Available</li>
-        				<li class="opts"><input type="checkbox" id="out" class="filter_opts" />On Loan</li>
-                         <li class="opts"><input type="checkbox" id="yes" class="filter_opts" />Borrowed</li>
+        				<li class="opts"><input type="checkbox" id="in" onclick="handleInput('filter');" class="filter_opts" />Available</li>
+        				<li class="opts"><input type="checkbox" id="out" onclick="handleInput('filter');" class="filter_opts" />On Loan</li>
+                         <li class="opts"><input type="checkbox" id="yes" onclick="handleInput('filter');" class="filter_opts" />Borrowed</li>
                     </div>
     			</ul>
     		</div>
